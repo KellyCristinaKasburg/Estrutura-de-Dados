@@ -1,0 +1,127 @@
+function DuplaEnc() {
+
+    let Node = function Element(value) {
+        this.chave = val;
+        this.prox = null;
+        this.ante = null;
+    }
+
+    let value = 0;
+    let head, tailer = null;
+    this.first = new Element(value);
+
+    this.append = function(element){ 
+        let node = new Node(element),
+        current;
+        if (head === null) {
+            head = node;
+        } else {
+            current = head; 
+            while(current.prox) {
+                current = current.prox;
+            }
+            current.prox = node;
+        }
+        chave++;
+
+        if(tailer == null){
+            tailer = node;
+        } else {
+            current = tailer;
+            while(current.ante){
+                current = current.ante;
+            }
+            current.ante = node;
+        }
+        chave--;
+    };
+
+    this.add = function (valor) {
+        if (this.first != null) {
+            var pointer = this.first;
+            do {
+                if (pointer.prox == null) {
+                    pointer.prox = new Element(valor);
+                    pointer.prox.ante = pointer;
+                    return valor + " , foi adicionado ";
+                    break;
+                } else {
+                    pointer = pointer.prox;
+                }
+            } while (pointer != null);
+        } else {
+            this.first = new Element(valor);
+            return valor + " , foi adicionado! ";
+        }
+    }
+
+    this.busca = function (valor) {
+        var pointer = this.first;
+        do {
+            if (pointer.chave != valor) {
+                pointer = pointer.prox;
+            } else {
+                break;
+            }
+        } while (pointer != null);
+        return pointer;
+    }
+
+    this.remove = function (valor) {
+        var busca = this.busca(valor);
+        if (busca == null) {
+            return "Impossivel de remover, não existe esse valor! \nTente novamente! ";
+        } else if (busca == this.first) {
+            if (busca.prox != null) {
+                var proximo = busca.prox;
+                busca.chave = proximo.chave;
+                if (proximo.prox != null) {
+                    proximo.prox.ante = busca;
+                }
+                busca.prox = proximo.prox;
+                proximo = null;
+                return "Remoçao realizada com sucesso no inicio! ";
+            } else {
+                this.first = null;
+                return "Remoçao realizada com sucesso! \nA lista está vazia! ";
+            }
+        } else if (busca.prox == null {
+            busca.ante.prox = null;
+            busca = null;
+            return "Remoção realizada com sucesso no fim! ";
+        } else {
+            busca.prox.ante = busca.ante;
+            busca.ante.prox = busca.prox;
+            busca = null;
+            return "Remoção realizada com sucesso no meio! ";
+        }
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Document</title>
+</head>
+<body>
+    
+    <script src="Dupla.js"></script>
+    <script>
+        let Dupla = new DuplaEnc();
+        Dupla.add(2);
+        Dupla.append(15);
+        Dupla.append(20);
+        Dupla.append(30);
+        Dupla.add(5);
+        Dupla.add(66);
+        Dupla.remove(55);
+        console.log(Dupla.busca()); 
+        el = document.getElementById("string");
+        el.innerHTML = Dupla
+    </script>
+</body>
+</html>
