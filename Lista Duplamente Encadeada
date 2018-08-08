@@ -1,6 +1,6 @@
-function DuplaEnc() {
+function DuplaEnc(value) {
 
-    let Node = function Element(value) {
+    let Node = function Element(val) {
         this.chave = val;
         this.prox = null;
         this.ante = null;
@@ -107,21 +107,23 @@ function DuplaEnc() {
 
     <title>Document</title>
 </head>
-<body>
-    
+<body> 
     <script src="Dupla.js"></script>
     <script>
-        let Dupla = new DuplaEnc();
-        Dupla.add(2);
-        Dupla.append(15);
-        Dupla.append(20);
-        Dupla.append(30);
-        Dupla.add(5);
-        Dupla.add(66);
-        Dupla.remove(55);
-        console.log(Dupla.busca()); 
-        el = document.getElementById("string");
-        el.innerHTML = Dupla
+        alert("Lista Dupla");
+            var Dupla = new DuplaEnc(5);
+            alert(Dupla.add(6));
+            alert(Dupla.add(4));
+            alert(Dupla.add(7));
+            alert(Dupla.busca(5).chave);
+            alert(Dupla.busca(6).chave);
+            alert(Dupla.remove(7));
+            alert(Dupla.remove(6));
+            alert(Dupla.remove(5));
+            alert(Dupla.busca(5));
+            alert(Dupla.remove(5));
+            alert(Dupla.remove(4));
+            alert(Dupla.add(42));
     </script>
 </body>
 </html>
